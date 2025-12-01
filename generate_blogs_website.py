@@ -74,7 +74,7 @@ class GenerateBlogsWebsite:
     def generateAutoGenerateArticlesScript(self, getGiteeInfoResult):
         with open('_posts/generate_articles.py','r') as f:
             script = f.read()
-        script = script.replace("GenerateBlogs(\"owner\",\"repo\")","GenerateBlogs(\"%s\",\"%s\")" % (getGiteeInfoResult['login'],getGiteeInfoResult['login'] + ".gitee.io"))
+        script = script.replace('GenerateArticles("owner", "repo")','GenerateArticles("%s", "%s")' % (getGiteeInfoResult['login'], getGiteeInfoResult['login'] + ".gitee.io"))
         with open('_posts/generate_articles.py','w') as f:
             f.write(script)
 
