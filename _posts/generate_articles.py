@@ -241,7 +241,7 @@ comments: true
 def main():
     """主函数 - 类当函数用，直接创建实例即可"""
     # 直接创建实例，__init__就是入口点
-    GenerateArticles("", "")
+    GenerateArticles("owner", "repo")
 
 if __name__ == '__main__':
     main()

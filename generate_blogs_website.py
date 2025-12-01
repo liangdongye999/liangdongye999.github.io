@@ -5,7 +5,7 @@
 # 开发原则是：保持简单、保持可维护性、保持可扩展性、保持可定制性
 # 遵守驼峰变量名规范
 
-class generateBlogsWebsite:
+class GenerateBlogsWebsite:
     def getGiteeInfo(self, userName):
         with self.urlopen(f'https://gitee.com/api/v5/users/{userName}') as response:
             return response.read().decode('utf-8')
@@ -74,7 +74,7 @@ class generateBlogsWebsite:
     def generateAutoGenerateArticlesScript(self, getGiteeInfoResult):
         with open('_posts/generate_articles.py','r') as f:
             script = f.read()
-        script = script.replace("GenerateBlogs(\"\",\"\")","GenerateBlogs(\"%s\",\"%s\")" % (getGiteeInfoResult['login'],getGiteeInfoResult['login'] + ".gitee.io"))
+        script = script.replace("GenerateBlogs(\"owner\",\"repo\")","GenerateBlogs(\"%s\",\"%s\")" % (getGiteeInfoResult['login'],getGiteeInfoResult['login'] + ".gitee.io"))
         with open('_posts/generate_articles.py','w') as f:
             f.write(script)
 
@@ -93,7 +93,7 @@ class generateBlogsWebsite:
         self.generateAutoGenerateArticlesScript(getGiteeInfoResult)
 
 def main():
-    generateBlogsWebsite()
+    GenerateBlogsWebsite()
     return 0
 
 if __name__ == '__main__':
