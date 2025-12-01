@@ -1,43 +1,29 @@
-# Chirpy Starter
+# 项目介绍
 
-[![Gem Version](https://img.shields.io/gem/v/jekyll-theme-chirpy)][gem]&nbsp;
-[![GitHub license](https://img.shields.io/github/license/cotes2020/chirpy-starter.svg?color=blue)][mit]
+你好，这是一个基于 Chirpy 的博客模版项目，能生成一个以 Issues 为 CMS 的前端静态博客网站，他会在每夜的 00:00 自动从 Gitee 仓库中拉取最新的 Issues 内容并生成静态博客网站。
 
-When installing the [**Chirpy**][chirpy] theme through [RubyGems.org][gem], Jekyll can only read files in the folders
-`_data`, `_layouts`, `_includes`, `_sass` and `assets`, as well as a small part of options of the `_config.yml` file
-from the theme's gem. If you have ever installed this theme gem, you can use the command
-`bundle info --path jekyll-theme-chirpy` to locate these files.
+# 如何使用
 
-The Jekyll team claims that this is to leave the ball in the user’s court, but this also results in users not being
-able to enjoy the out-of-the-box experience when using feature-rich themes.
+把本项目 Fork 到你的仓库，名字叫 `yourname.gitee.io`，`yourname` 改成你自己的 Gitee 用户名，以后你的文章就在这个仓库的 Issues 写了。
 
-To fully use all the features of **Chirpy**, you need to copy the other critical files from the theme's gem to your
-Jekyll site. The following is a list of targets:
+# 运行脚本
 
-```shell
-.
-├── _config.yml
-├── _plugins
-├── _tabs
-└── index.html
+克隆到本地，用 Python3 运行 `generate_blogs_website.py` 脚本，就配置好了。
+
+# 提交到云端
+
+使用 Git 命令提交到 Gitee 仓库。
+
+```bash
+git add .
+git commit -m "Initial commit"
+git push origin main
 ```
 
-To save you time, and also in case you lose some files while copying, we extract those files/configurations of the
-latest version of the **Chirpy** theme and the [CD][CD] workflow to here, so that you can start writing in minutes.
+# 想办法把网站部署到 Github Pages
 
-## Usage
+这一步需要你想办法访问 GitHub，把你的仓库导入到 GitHub 中，名字是 `yourname.github.io`，`yourname` 改成你自己的 GitHub 用户名。
 
-Check out the [theme's docs](https://github.com/cotes2020/jekyll-theme-chirpy/wiki).
+在仓库设置的 Pages 里选择从 Actions 构建，分支选择 `main`。
 
-## Contributing
-
-This repository is automatically updated with new releases from the theme repository. If you encounter any issues or want to contribute to its improvement, please visit the [theme repository][chirpy] to provide feedback.
-
-## License
-
-This work is published under [MIT][mit] License.
-
-[gem]: https://rubygems.org/gems/jekyll-theme-chirpy
-[chirpy]: https://github.com/cotes2020/jekyll-theme-chirpy/
-[CD]: https://en.wikipedia.org/wiki/Continuous_deployment
-[mit]: https://github.com/cotes2020/chirpy-starter/blob/master/LICENSE
+最后你就可以去 Issues 里快乐地写文章了，每篇文章就是一个 Issue，标题就是文章的标题，内容就是文章的内容。
