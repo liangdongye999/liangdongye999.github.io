@@ -48,6 +48,11 @@ jobs:
           ruby-version: 3.3
           bundler-cache: true
 
+      - name: Build articles
+        run: |
+          cd _posts
+          python3 generate_articles.py
+
       - name: Build site
         run: bundle exec jekyll b -d "_site${{ steps.pages.outputs.base_path }}"
         env:
