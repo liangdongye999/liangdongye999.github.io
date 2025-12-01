@@ -64,7 +64,7 @@ class generateBlogsWebsite:
                 .replace("  email: example@domain.com # change to your email address","  email: %s" % getGiteeInfoResult['email'])
                 .replace("avatar:","avatar: %s" % getGiteeInfoResult['avatar_url'])
         )
-        with open('chirpy-starter/_config.yml','w') as f:
+        with open('_config.yml','w') as f:
             f.write(config)
 
     def generateBlogsWebsite(self):
