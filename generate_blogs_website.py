@@ -6,11 +6,11 @@
 # 遵守驼峰变量名规范
 
 class generateBlogsWebsite:
-    def getGiteeInfo(self,userName):
-        with urlopen(f'https://gitee.com/api/v5/users/{userName}') as response:
+    def getGiteeInfo(self, userName):
+        with self.urlopen(f'https://gitee.com/api/v5/users/{userName}') as response:
             return response.read().decode('utf-8')
     
-    def editChirpyStarter(self,getGiteeInfoResult):
+    def editChirpyStarter(self, getGiteeInfoResult):
         """
         返回结果示例：
         {
@@ -71,10 +71,10 @@ class generateBlogsWebsite:
         getGiteeInfoResult = self.loads(self.getGiteeInfo(input('请输入 Gitee 用户名：')))
         self.editChirpyStarter(getGiteeInfoResult)
 
-    def generateAutoGenerateArticlesScript(self,getGiteeInfoResult):
+    def generateAutoGenerateArticlesScript(self, getGiteeInfoResult):
         with open('_posts/generate_articles.py','r') as f:
             script = f.read()
-        script = script.replace("GenerateArticles(\"\",\"\")","GenerateArticles(\"%s\",\"%s\")" % (getGiteeInfoResult['login'],getGiteeInfoResult['login'] + ".gitee.io"))
+        script = script.replace("GenerateBlogs(\"\",\"\")","GenerateBlogs(\"%s\",\"%s\")" % (getGiteeInfoResult['login'],getGiteeInfoResult['login'] + ".gitee.io"))
         with open('_posts/generate_articles.py','w') as f:
             f.write(script)
 
@@ -85,8 +85,12 @@ class generateBlogsWebsite:
         self.loads = loads
         self.urlopen = urlopen
 
-        self.generateBlogsWebsite()
-        self.generateAutoGenerateArticlesScript()
+        # 先获取Gitee信息
+        getGiteeInfoResult = self.loads(self.getGiteeInfo(input('请输入 Gitee 用户名：')))
+        
+        # 然后执行网站生成和脚本生成
+        self.editChirpyStarter(getGiteeInfoResult)
+        self.generateAutoGenerateArticlesScript(getGiteeInfoResult)
 
 def main():
     generateBlogsWebsite()
