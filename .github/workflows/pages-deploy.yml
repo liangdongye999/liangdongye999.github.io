@@ -12,8 +12,8 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-cron:
-  - cron: '0 0 * * *'
+  schedule:
+    - cron: '0 0 * * *'
 
 permissions:
   contents: read
