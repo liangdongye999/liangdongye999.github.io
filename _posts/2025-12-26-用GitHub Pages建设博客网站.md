@@ -1,3 +1,9 @@
+---
+title: 用GitHub Pages建设博客网站
+tags:
+  - 网站
+---
+
 访问[https://github.com/cotes2020/chirpy-starter/](https://github.com/cotes2020/chirpy-starter/)，这是一个模板仓库，点`Use this template`、`Create a new repository`就创建好了；注意，不是`Fork`。
 
 主要修改以下内容，不用对着我的改，你可以问AI我改了什么，意味着什么：

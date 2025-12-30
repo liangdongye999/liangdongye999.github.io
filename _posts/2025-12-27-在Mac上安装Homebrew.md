@@ -1,3 +1,9 @@
+---
+title: 在Mac上安装Homebrew
+tags:
+  - 脚本
+---
+
 在Mac上安装Homebrew，使用如下指令：
 
 ```bash

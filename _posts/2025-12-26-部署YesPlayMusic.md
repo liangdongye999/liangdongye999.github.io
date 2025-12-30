@@ -1,3 +1,9 @@
+---
+title: 部署YesPlayMusic
+tags:
+  - 自托管
+---
+
 用命令行：
 
 ```bash

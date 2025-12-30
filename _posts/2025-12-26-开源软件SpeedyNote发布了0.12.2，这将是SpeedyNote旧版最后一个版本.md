@@ -1,3 +1,9 @@
+---
+title: 开源软件SpeedyNote发布了0.12.2，这将是SpeedyNote旧版最后一个版本
+tags:
+  - 新闻
+---
+
 根据[https://github.com/alpha-liu-01/SpeedyNote/releases/tag/v0.12.2](https://github.com/alpha-liu-01/SpeedyNote/releases/tag/v0.12.2)，SpeedyNote发布了0.12.2，这将是SpeedyNote旧版的最后一个版本。
 
 SpeedyNote是一个用C++和Qt6编写的开源笔记软件，专为触控笔设计，原生适配于多个平台。
