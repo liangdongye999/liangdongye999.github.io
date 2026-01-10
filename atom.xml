@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>梁栋烨的月亮船</title>
+  <icon>https://liangdongye999.github.io/icon.png</icon>
+  <subtitle>每一个月亮下的人都值得被记录</subtitle>
+  <link href="https://liangdongye999.github.io/atom.xml" rel="self"/>
+  
+  <link href="https://liangdongye999.github.io/"/>
+  <updated>2026-01-10T05:11:52.134Z</updated>
+  <id>https://liangdongye999.github.io/</id>
+  
+  <author>
+    <name>梁栋烨</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>用Hexo + Butterfly + Giscus建设一个可以评论的博客网站</title>
+    <link href="https://liangdongye999.github.io/2026/01/10/%E7%94%A8Hexo%20+%20Butterfly%20+%20Giscus%E5%BB%BA%E8%AE%BE%E4%B8%80%E4%B8%AA%E5%8F%AF%E4%BB%A5%E8%AF%84%E8%AE%BA%E7%9A%84%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/"/>
+    <id>https://liangdongye999.github.io/2026/01/10/%E7%94%A8Hexo%20+%20Butterfly%20+%20Giscus%E5%BB%BA%E8%AE%BE%E4%B8%80%E4%B8%AA%E5%8F%AF%E4%BB%A5%E8%AF%84%E8%AE%BA%E7%9A%84%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/</id>
+    <published>2026-01-10T05:10:00.000Z</published>
+    <updated>2026-01-10T05:11:52.134Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;最近搭建了一个个人博客网站，使用了 Hexo 静态博客框架，配合 Butterfly 主题和 Giscus</summary>
+        
+      
+    
+    
+    
+    <category term="技术" scheme="https://liangdongye999.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="Hexo" scheme="https://liangdongye999.github.io/tags/Hexo/"/>
+    
+    <category term="Butterfly" scheme="https://liangdongye999.github.io/tags/Butterfly/"/>
+    
+    <category term="Giscus" scheme="https://liangdongye999.github.io/tags/Giscus/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>生病日记，好烦啊，总是生病</title>
+    <link href="https://liangdongye999.github.io/2026/01/10/2026-01-10/"/>
+    <id>https://liangdongye999.github.io/2026/01/10/2026-01-10/</id>
+    <published>2026-01-10T04:58:00.000Z</published>
+    <updated>2026-01-10T05:10:15.739Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;时间&lt;/th&gt;
+&lt;th&gt;事件&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;&lt;tr&gt;
+&lt;td&gt;13:01&lt;/td&gt;
+&lt;td&gt;刚建好网站，正在写内容填充，感觉有点头痛、鼻塞&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;13:10</summary>
+        
+      
+    
+    
+    
+    <category term="日记" scheme="https://liangdongye999.github.io/categories/%E6%97%A5%E8%AE%B0/"/>
+    
+    
+    <category term="生病" scheme="https://liangdongye999.github.io/tags/%E7%94%9F%E7%97%85/"/>
+    
+    <category term="感冒" scheme="https://liangdongye999.github.io/tags/%E6%84%9F%E5%86%92/"/>
+    
+  </entry>
+  
+</feed>
