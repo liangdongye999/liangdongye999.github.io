@@ -1,0 +1,236 @@
+# --------------------------------------
+# Hexo Butterfly Theme Configuration
+# --------------------------------------
+
+# --------------------------------------
+# Navigation Settings
+# --------------------------------------
+nav:
+  logo:
+  display_title: true
+  display_post_title: true
+  fixed: false
+
+# --------------------------------------
+# Index page settings
+# --------------------------------------
+# Article layout on the homepage
+# 1: Cover on the left, info on the right
+# 2: Cover on the right, info on the left
+# 3: Cover and info alternate between left and right
+# 4: Cover on top, info on the bottom
+# 5: Info displayed on the cover
+# 6: Masonry layout - Cover on top, info on the bottom
+# 7: Masonry layout - Info displayed on the cover
+index_layout: 6
+
+# The subtitle on homepage
+subtitle:
+  enable: true
+  # Typewriter Effect
+  effect: true
+  # Customize typed.js
+  # https://github.com/mattboldt/typed.js/#customization
+  typed_option:
+  # Source - Call the third-party service API (Chinese only)
+  # It will show the source first, then show the content of sub
+  # Choose: false/1/2/3
+  # false - disable the function
+  # 1 - hitokoto.cn
+  # 2 - https://api.aa1.cn/doc/yiyan.html
+  # 3 - jinrishici.com
+  source: 1
+  # If you close the typewriter effect, the subtitle will only show the first line of sub
+  sub:
+
+# Display the article introduction on homepage
+# 1: description
+# 2: both (if the description exists, it will show description, or show the auto_excerpt)
+# 3: auto_excerpt (default)
+# false: do not show the article introduction
+index_post_content:
+  method: 3
+  # If you set method to 2 or 3, the length need to config
+  length: 500
+
+menu:
+  首页: / || fas fa-home
+  技术: /tech/ || fas fa-code
+  日记: /daily/ || fas fa-calendar-alt
+  标签: /tags/ || fas fa-tags
+  归档: /archives/ || fas fa-archive
+  友链: /link/ || fas fa-link
+
+# --------------------------------------
+# Image Settings
+# --------------------------------------
+
+# Social media links
+social:
+  fab fa-github: https://github.com/liangdongye999 || Github || ''
+  fas fa-envelope: mailto:3813563706@qq.com || Email || ''
+  fab fa-bilibili: https://space.bilibili.com/3632318820387151 || 哔哩哔哩 || ''
+  fas fa-rss: /atom.xml || RSS || ''
+favicon: /img/163_by_e4v.jpg
+
+avatar:
+  img: /img/Abstract_Painting_Photo_by_Pierre_Châtel-Innocenti.jpg
+  effect: false
+
+# If the banner of page not setting, it will show the default_top_img
+default_top_img: /img/Ubuntu_tide_by_lost-cause-light.png
+
+cover:
+  index_enable: true
+  aside_enable: true
+  archives_enable: true
+  default_cover:
+    - /img/canvas_by_roytanck.jpg
+
+# Lazyload
+lazyload:
+  enable: true
+  native: false
+  field: site
+  placeholder:
+  blur: false
+
+# The background image of footer
+footer_img: /img/Forever_by_Shady_S.jpg
+
+# --------------------------------------
+# Footer Settings
+# --------------------------------------
+footer:
+  nav:
+  owner:
+    enable: true
+    since: 2025
+  copyright:
+    enable: true
+    version: false
+  custom_text:
+
+# Default display mode - light (default) / dark
+display_mode: dark
+
+# --------------------------------------
+# Search
+# --------------------------------------
+search:
+  use: local_search
+  placeholder: 搜索文章...
+
+  local_search:
+    preload: false
+    top_n_per_article: 1
+    unescape: false
+    pagination:
+      enable: false
+      hitsPerPage: 8
+    CDN:
+
+# --------------------------------------
+# Comments System
+# --------------------------------------
+comments:
+  use: Giscus
+  text: true
+  lazyload: false
+  count: false
+  card_post_count: false
+
+# Giscus
+# https://giscus.app/
+giscus:
+  repo: liangdongye999/liangdongye999.github.io
+  repo_id: R_kgDOQ3CqYg
+  category_id: DIC_kwDOQ3CqYs4C0x-_
+  light_theme: light
+  dark_theme: dark
+  js:
+  option:
+
+# --------------------------------------
+# Busuanzi count for PV / UV in site
+# --------------------------------------
+busuanzi:
+  site_uv: false
+  site_pv: false
+  page_pv: false
+
+# --------------------------------------
+# Aside Settings
+# --------------------------------------
+aside:
+  enable: true
+  hide: false
+  button: true
+  mobile: true
+  position: right
+  display:
+    archive: true
+    tag: true
+    category: true
+  card_author:
+    enable: true
+    description:
+    button:
+      enable: true
+      icon: fas fa-star
+      text: 关注我
+      link: javascript:alert("收藏本站，或者订阅本站的RSS")
+  card_announcement:
+    enable: true
+    content: 梁栋烨的月亮船
+  card_recent_post:
+    enable: true
+    limit: 5
+    sort: date
+    sort_order:
+  card_newest_comments:
+    enable: false
+    sort_order:
+    limit: 6
+    storage: 10
+    avatar: true
+  card_categories:
+    enable: true
+    limit: 8
+    expand: none
+    sort_order:
+  card_tags:
+    enable: true
+    limit: 40
+    color: false
+    orderby: random
+    order: 1
+    sort_order:
+  card_archives:
+    enable: true
+    type: monthly
+    format: MMMM YYYY
+    order: -1
+    limit: 8
+    sort_order:
+  card_post_series:
+    enable: true
+    series_title: false
+    orderBy: 'date'
+    order: -1
+  card_webinfo:
+    enable: true
+    post_count: true
+    last_push_date: true
+    sort_order:
+    runtime_date:
+
+# --------------------------------------
+# Dark Mode
+# --------------------------------------
+darkmode:
+  enable: true
+  button: true
+  autoChangeMode: true
+  start:
+  end:
