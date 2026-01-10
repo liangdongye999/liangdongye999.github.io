@@ -55,8 +55,8 @@ index_post_content:
 
 menu:
   首页: / || fas fa-home
-  技术: /tech/ || fas fa-code
-  日记: /daily/ || fas fa-calendar-alt
+  技术: /categories/技术/ || fas fa-code
+  日记: /categories/日记/ || fas fa-calendar-alt
   标签: /tags/ || fas fa-tags
   归档: /archives/ || fas fa-archive
   友链: /link/ || fas fa-link
