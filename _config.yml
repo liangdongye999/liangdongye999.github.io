@@ -101,7 +101,9 @@ theme: butterfly
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
-  type: ''
+  type: git
+  repo: git@gitee.com:liangdongye/liangdongye999.github.io.git
+  branch: gh-pages
 
 # RSS Feed
 feed:
