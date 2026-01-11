@@ -6,7 +6,7 @@
   <link href="https://liangdongye999.github.io/atom.xml" rel="self"/>
   
   <link href="https://liangdongye999.github.io/"/>
-  <updated>2026-01-10T05:11:52.134Z</updated>
+  <updated>2026-01-11T04:50:30.245Z</updated>
   <id>https://liangdongye999.github.io/</id>
   
   <author>
@@ -17,11 +17,129 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>用Hexo + Butterfly + Giscus建设一个可以评论的博客网站</title>
-    <link href="https://liangdongye999.github.io/2026/01/10/%E7%94%A8Hexo%20+%20Butterfly%20+%20Giscus%E5%BB%BA%E8%AE%BE%E4%B8%80%E4%B8%AA%E5%8F%AF%E4%BB%A5%E8%AF%84%E8%AE%BA%E7%9A%84%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/"/>
-    <id>https://liangdongye999.github.io/2026/01/10/%E7%94%A8Hexo%20+%20Butterfly%20+%20Giscus%E5%BB%BA%E8%AE%BE%E4%B8%80%E4%B8%AA%E5%8F%AF%E4%BB%A5%E8%AF%84%E8%AE%BA%E7%9A%84%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/</id>
+    <title>用 Docker + Memos 搭建一个私人的备忘录</title>
+    <link href="https://liangdongye999.github.io/2026/01/11/%E7%94%A8%20Docker%20+%20Memos%20%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%A7%81%E4%BA%BA%E7%9A%84%E5%A4%87%E5%BF%98%E5%BD%95/"/>
+    <id>https://liangdongye999.github.io/2026/01/11/%E7%94%A8%20Docker%20+%20Memos%20%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%A7%81%E4%BA%BA%E7%9A%84%E5%A4%87%E5%BF%98%E5%BD%95/</id>
+    <published>2026-01-11T04:41:38.962Z</published>
+    <updated>2026-01-11T04:50:30.245Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td</summary>
+        
+      
+    
+    
+    
+    
+    <category term="Docker" scheme="https://liangdongye999.github.io/tags/Docker/"/>
+    
+    <category term="Memos" scheme="https://liangdongye999.github.io/tags/Memos/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用 Docker + Cashbook 搭建一个私人的记账本</title>
+    <link href="https://liangdongye999.github.io/2026/01/11/%E7%94%A8%20Docker%20+%20Cashbook%20%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%A7%81%E4%BA%BA%E7%9A%84%E8%AE%B0%E8%B4%A6%E6%9C%AC/"/>
+    <id>https://liangdongye999.github.io/2026/01/11/%E7%94%A8%20Docker%20+%20Cashbook%20%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%A7%81%E4%BA%BA%E7%9A%84%E8%AE%B0%E8%B4%A6%E6%9C%AC/</id>
+    <published>2026-01-11T04:32:00.000Z</published>
+    <updated>2026-01-11T04:44:08.330Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td</summary>
+        
+      
+    
+    
+    
+    <category term="技术" scheme="https://liangdongye999.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="Docker" scheme="https://liangdongye999.github.io/tags/Docker/"/>
+    
+    <category term="Cashbook" scheme="https://liangdongye999.github.io/tags/Cashbook/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>用 Docker + SearXNG 搭建一个私人的搜索引擎</title>
+    <link href="https://liangdongye999.github.io/2026/01/11/%E7%94%A8%20Docker%20+%20SearXNG%20%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%A7%81%E4%BA%BA%E7%9A%84%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/"/>
+    <id>https://liangdongye999.github.io/2026/01/11/%E7%94%A8%20Docker%20+%20SearXNG%20%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%A7%81%E4%BA%BA%E7%9A%84%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/</id>
+    <published>2026-01-11T04:10:00.000Z</published>
+    <updated>2026-01-11T04:30:57.991Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td</summary>
+        
+      
+    
+    
+    
+    <category term="技术" scheme="https://liangdongye999.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="Docker" scheme="https://liangdongye999.github.io/tags/Docker/"/>
+    
+    <category term="SearXNG" scheme="https://liangdongye999.github.io/tags/SearXNG/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>生病日记，好烦啊，好想痊愈</title>
+    <link href="https://liangdongye999.github.io/2026/01/11/2026-01-11/"/>
+    <id>https://liangdongye999.github.io/2026/01/11/2026-01-11/</id>
+    <published>2026-01-10T20:40:00.000Z</published>
+    <updated>2026-01-11T04:45:11.945Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;时间&lt;/th&gt;
+&lt;th&gt;事件&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;&lt;tr&gt;
+&lt;td&gt;04:40&lt;/td&gt;
+&lt;td&gt;做了个和吴语涵有关的梦起床，上了个厕所，决定去洗澡&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;04:</summary>
+        
+      
+    
+    
+    
+    <category term="日记" scheme="https://liangdongye999.github.io/categories/%E6%97%A5%E8%AE%B0/"/>
+    
+    
+    <category term="生病" scheme="https://liangdongye999.github.io/tags/%E7%94%9F%E7%97%85/"/>
+    
+    <category term="感冒" scheme="https://liangdongye999.github.io/tags/%E6%84%9F%E5%86%92/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>用 Hexo + Butterfly + Giscus 搭建一个可以评论的博客网站</title>
+    <link href="https://liangdongye999.github.io/2026/01/10/%E7%94%A8%20Hexo%20+%20Butterfly%20+%20Giscus%20%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%8F%AF%E4%BB%A5%E8%AF%84%E8%AE%BA%E7%9A%84%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/"/>
+    <id>https://liangdongye999.github.io/2026/01/10/%E7%94%A8%20Hexo%20+%20Butterfly%20+%20Giscus%20%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%8F%AF%E4%BB%A5%E8%AF%84%E8%AE%BA%E7%9A%84%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/</id>
     <published>2026-01-10T05:10:00.000Z</published>
-    <updated>2026-01-10T05:11:52.134Z</updated>
+    <updated>2026-01-11T04:09:11.578Z</updated>
     
     
       
@@ -50,7 +168,7 @@
     <link href="https://liangdongye999.github.io/2026/01/10/2026-01-10/"/>
     <id>https://liangdongye999.github.io/2026/01/10/2026-01-10/</id>
     <published>2026-01-10T04:58:00.000Z</published>
-    <updated>2026-01-10T05:10:15.739Z</updated>
+    <updated>2026-01-10T10:49:31.842Z</updated>
     
     
       

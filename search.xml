@@ -1,6 +1,129 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>生病日记，好烦啊，好想痊愈</title>
+    <url>/2026/01/11/2026-01-11/</url>
+    <content><![CDATA[<table>
+<thead>
+<tr>
+<th>时间</th>
+<th>事件</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>04:40</td>
+<td>做了个和吴语涵有关的梦起床，上了个厕所，决定去洗澡</td>
+</tr>
+<tr>
+<td>04:54</td>
+<td>洗完澡了，真舒服</td>
+</tr>
+<tr>
+<td>06:07</td>
+<td>准备吃早餐了，面包片和低脂鸡胸肉</td>
+</tr>
+<tr>
+<td>06:29</td>
+<td>吃完早餐了，药也喝完了，真开心</td>
+</tr>
+<tr>
+<td>07:50</td>
+<td>准备给宠物乌龟拍照</td>
+</tr>
+<tr>
+<td>07:52</td>
+<td>给三只可爱龟拍完照啦</td>
+</tr>
+<tr>
+<td>08:10</td>
+<td>准备滚一下电脑系统</td>
+</tr>
+<tr>
+<td>08:12</td>
+<td>太好了，系统软件包全部最新，不用滚了</td>
+</tr>
+<tr>
+<td>08:20</td>
+<td>我妈说九点钟带我去公园散步，不用我自己去散步了</td>
+</tr>
+<tr>
+<td>09:54</td>
+<td>准备出门散步咯</td>
+</tr>
+<tr>
+<td>11:14</td>
+<td>回到家啦</td>
+</tr>
+<tr>
+<td>12:05</td>
+<td>吃了两包面包片，真好吃</td>
+</tr>
+<tr>
+<td>12:09</td>
+<td>写文章啦</td>
+</tr>
+</tbody></table>
+<p>希望以后幸福美满，身体健康。</p>
+]]></content>
+      <categories>
+        <category>日记</category>
+      </categories>
+      <tags>
+        <tag>生病</tag>
+        <tag>感冒</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用 Docker + Cashbook 搭建一个私人的记账本</title>
+    <url>/2026/01/11/%E7%94%A8%20Docker%20+%20Cashbook%20%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%A7%81%E4%BA%BA%E7%9A%84%E8%AE%B0%E8%B4%A6%E6%9C%AC/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">        _,met$$$$$gg.          root@raspberrypi</span><br><span class="line">     ,g$$$$$$$$$$$$$$$P.       ----------------</span><br><span class="line">   ,g$$P&quot;&quot;       &quot;&quot;&quot;Y$$.&quot;.     OS: Debian GNU/Linux 13 (trixie) aarch64</span><br><span class="line">  ,$$P&#x27;              `$$$.     Host: Raspberry Pi 5 Model B Rev 1.1</span><br><span class="line">&#x27;,$$P       ,ggs.     `$$b:    Kernel: 6.12.47+rpt-rpi-2712</span><br><span class="line">`d$$&#x27;     ,$P&quot;&#x27;   .    $$$     Uptime: 7 days, 1 hour, 45 mins</span><br><span class="line"> $$P      d$&#x27;     ,    $$P     Packages: 645 (dpkg)</span><br><span class="line"> $$:      $$.   -    ,d$$&#x27;     Shell: bash 5.2.37</span><br><span class="line"> $$;      Y$b._   _,d$P&#x27;       Terminal: /dev/pts/0</span><br><span class="line"> Y$$.    `.`&quot;Y$$$$P&quot;&#x27;          CPU: BCM2712 (4) @ 2.40 GHz</span><br><span class="line"> `$$b      &quot;-.__               GPU: Broadcom bcm2712-vc6 [Integrated]</span><br><span class="line">  `Y$$b                        Memory: 1750 MiB / 8063 MiB</span><br><span class="line">   `Y$$.</span><br><span class="line">     `$$b.                                             </span><br><span class="line">       `Y$$b.                                          </span><br><span class="line">         `&quot;Y$b._</span><br><span class="line">             `&quot;&quot;&quot;&quot;</span><br></pre></td></tr></table></figure>
+
+<h2 id="为什么选择-Cashbook"><a href="#为什么选择-Cashbook" class="headerlink" title="为什么选择 Cashbook"></a>为什么选择 Cashbook</h2><p>Cashbook 是一个功能全面、设计灵活的账单管理系统，采用前后端分离架构，后端独立管理界面便于系统维护。系统支持用户前台注册，并提供明暗主题切换以优化视觉体验。部署方式采用 Docker，简化了环境配置与发布流程。</p>
+<p>核心功能聚焦于多平台账单导入与管理，支持支付宝、微信、京东金融的 CSV 账单文件导入，并可在导入时根据用户配置自动转换消费类型。此外，系统提供模板导入功能，满足个性化数据录入需求。</p>
+<p>数据展示方面，系统提供直观的消费日历看板与月度账单分析（未来计划集成 AI 分析）。通过丰富的图表可视化支出类型、支付方式、每日&#x2F;每月流水统计及流水归属，帮助用户清晰掌握财务状况。</p>
+<p>系统支持多用户、多账本模式，实现用户间数据隔离与账本间独立管理。数据存储支持 PostgreSQL、MySQL 和 SQLite 多种数据库，并具备账本与系统级别的数据快速导入&#x2F;导出迁移能力。附加功能包括小票图片上传、自助平账（收支抵消）以及共享账本（多用户协同记账）。同时，系统已完成 Web 移动端适配，确保在不同设备上均能流畅使用。</p>
+<h2 id="为什么选择-Docker"><a href="#为什么选择-Docker" class="headerlink" title="为什么选择 Docker"></a>为什么选择 Docker</h2><p>Docker 是一个用于开发、交付和运行应用程序的开放平台。</p>
+<p>Docker 使您能够将应用程序与基础设施分离，从而可以快速交付软件。</p>
+<p>使用 Docker，您可以以管理应用程序的方式来管理基础设施。通过利用 Docker 在交付、测试和部署代码方面的方法，您可以显著减少从编写代码到在生产环境中运行代码的延迟。</p>
+<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><ul>
+<li>Docker</li>
+<li>Cashbook</li>
+<li>Debian Server</li>
+</ul>
+<h2 id="搭建步骤"><a href="#搭建步骤" class="headerlink" title="搭建步骤"></a>搭建步骤</h2><h3 id="安装-Docker"><a href="#安装-Docker" class="headerlink" title="安装 Docker"></a>安装 Docker</h3><p>删除旧版本的 Docker：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt remove $(dpkg --get-selections docker.io docker-compose docker-doc podman-docker containerd runc | <span class="built_in">cut</span> -f1)</span><br></pre></td></tr></table></figure>
+
+<p>安装新版本的 Docker：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Add Docker&#x27;s official GPG key:</span></span><br><span class="line"><span class="built_in">sudo</span> apt update</span><br><span class="line"><span class="built_in">sudo</span> apt install ca-certificates curl</span><br><span class="line"><span class="built_in">sudo</span> install -m 0755 -d /etc/apt/keyrings</span><br><span class="line"><span class="built_in">sudo</span> curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc</span><br><span class="line"><span class="built_in">sudo</span> <span class="built_in">chmod</span> a+r /etc/apt/keyrings/docker.asc</span><br><span class="line"></span><br><span class="line"><span class="comment"># Add the repository to Apt sources:</span></span><br><span class="line"><span class="built_in">sudo</span> <span class="built_in">tee</span> /etc/apt/sources.list.d/docker.sources &lt;&lt;<span class="string">EOF</span></span><br><span class="line"><span class="string">Types: deb</span></span><br><span class="line"><span class="string">URIs: https://download.docker.com/linux/debian</span></span><br><span class="line"><span class="string">Suites: $(. /etc/os-release &amp;&amp; echo &quot;$VERSION_CODENAME&quot;)</span></span><br><span class="line"><span class="string">Components: stable</span></span><br><span class="line"><span class="string">Signed-By: /etc/apt/keyrings/docker.asc</span></span><br><span class="line"><span class="string">EOF</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">sudo</span> apt update</span><br></pre></td></tr></table></figure>
+
+<h2 id="安装-Cashbook"><a href="#安装-Cashbook" class="headerlink" title="安装 Cashbook"></a>安装 Cashbook</h2><p>使用 Docker Compose：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">main:</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">cashbook4</span></span><br><span class="line">    <span class="attr">depends_on:</span> </span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;db&quot;</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">dingdangdog/cashbook:latest</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">always</span></span><br><span class="line">    <span class="comment"># network_mode: &quot;host&quot;</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./data:/app/data</span></span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">      <span class="comment"># 环境变量详解请查阅：https://doc.cashbook.oldmoon.top/deploy/#cashbook环境变量详解</span></span><br><span class="line">      <span class="comment">#NUXT_DATA_PATH: &quot;/app/data&quot;</span></span><br><span class="line">      <span class="attr">DATABASE_URL:</span> <span class="string">&quot;postgresql://postgres:postgres@cashbook_db:5432/cashbook?schema=public&quot;</span></span><br><span class="line">      <span class="attr">NUXT_AUTH_SECRET:</span> <span class="string">&quot;auth_secret&quot;</span></span><br><span class="line">      <span class="attr">NUXT_ADMIN_USERNAME:</span> <span class="string">&quot;admin&quot;</span></span><br><span class="line">      <span class="attr">NUXT_ADMIN_PASSWORD:</span> <span class="string">&quot;fb35e9343a1c095ce1c1d1eb6973dc570953159441c3ee315ecfefb6ed05f4cc&quot;</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="number">9090</span><span class="string">:9090</span></span><br><span class="line">  <span class="attr">db:</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">cashbook_db</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">postgres:17.4-alpine3.21</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">always</span></span><br><span class="line">    <span class="comment">#network_mode: &quot;host&quot;</span></span><br><span class="line">    <span class="comment"># set shared memory limit when using docker-compose</span></span><br><span class="line">    <span class="attr">shm_size:</span> <span class="string">128mb</span></span><br><span class="line">    <span class="comment"># or set shared memory limit when deploy via swarm stack</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./db:/var/lib/postgresql/data</span> </span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">      <span class="comment">#POSTGRES_USER: postgres # 数据库用户名，不填默认为postgres</span></span><br><span class="line">      <span class="attr">POSTGRES_PASSWORD:</span> <span class="string">postgres</span> <span class="comment"># 数据库密码 【自行修改！】</span></span><br><span class="line">      <span class="attr">POSTGRES_DB:</span> <span class="string">cashbook</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="number">5432</span><span class="string">:5432</span> <span class="comment">#开发数据库端口，请【自行考虑】</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker compose up -d</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>默认管理员用户</th>
+<th>默认管理员密码</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>admin</td>
+<td>admin123456</td>
+</tr>
+</tbody></table>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本文介绍了安装 Docker、安装 Cashbook。</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
+        <tag>Cashbook</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>生病日记，好烦啊，总是生病</title>
     <url>/2026/01/10/2026-01-10/</url>
     <content><![CDATA[<table>
@@ -18,8 +141,88 @@
 <td>13:10</td>
 <td>编写建站教程</td>
 </tr>
+<tr>
+<td>13:17</td>
+<td>上传网站静态文件到云端</td>
+</tr>
+<tr>
+<td>13:29</td>
+<td>准备睡觉，下午去公园跑步增强免疫力</td>
+</tr>
+<tr>
+<td>14:17</td>
+<td>我擦，哥们怎么那么坏啊，睡不着居然在思考吴语涵</td>
+</tr>
+<tr>
+<td>14:18</td>
+<td>我求你别思考吴语涵了，人在一中过得很开心，从来没思考过你，甚至讨厌你</td>
+</tr>
+<tr>
+<td>14:19</td>
+<td>哥们，我求你别思考吴语涵了，你都喜欢多少女的了，上次是江婉桦、吕芸佩</td>
+</tr>
+<tr>
+<td>14:20</td>
+<td>上上次是林依可、易姗如、杨思锐，你怎么总是在思考女人的事情</td>
+</tr>
+<tr>
+<td>14:21</td>
+<td>讲真的哥，吴语涵那家伙，你都不记得长相了还在想她吗，那还是挺专一的了</td>
+</tr>
+<tr>
+<td>14:22</td>
+<td>算了，不思考吴语涵了，故人终究是离我而去了，唉，珍惜的没珍惜</td>
+</tr>
+<tr>
+<td>14:23</td>
+<td>哈哈，打起精神来吧哥，前面的路还在等着你呢</td>
+</tr>
+<tr>
+<td>14:24</td>
+<td>我决定了，下午就去公园跑步，跑完步就去步行街，坚定自己的想法</td>
+</tr>
+<tr>
+<td>14:25</td>
+<td>算了，睡不着，刷俩视频好了</td>
+</tr>
+<tr>
+<td>14:26</td>
+<td>哇，隔壁到底在干什么啊，好吵啊，怎么天天装修</td>
+</tr>
+<tr>
+<td>14:27</td>
+<td>住在隔壁，真的是倒霉催的了，我怎么那么倒霉啊，生病就算了还要被吵</td>
+</tr>
+<tr>
+<td>14:28</td>
+<td>终于安静了，呼，松一口气</td>
+</tr>
+<tr>
+<td>14:29</td>
+<td>哇，哥们，你怎么又装修啊，唉，逃不过的终究逃不过呃</td>
+</tr>
+<tr>
+<td>14:48</td>
+<td>准备出门跑步了</td>
+</tr>
+<tr>
+<td>16:43</td>
+<td>回到家啦，在春怡蛋糕买了两个甜甜圈，没在公园跑步，在公园走了两圈</td>
+</tr>
+<tr>
+<td>17:18</td>
+<td>准备吃晚饭</td>
+</tr>
+<tr>
+<td>17:32</td>
+<td>晚饭吃完了，排骨和番茄真好吃，汤也好喝</td>
+</tr>
+<tr>
+<td>18:49</td>
+<td>虽然澡没洗，但是好想睡觉啊，我先小眯一会</td>
+</tr>
 </tbody></table>
-<p>希望今年往后能身体健康吧。</p>
+<p>希望今年往后能身体健康吧，不留遗憾。</p>
 ]]></content>
       <categories>
         <category>日记</category>
@@ -30,8 +233,94 @@
       </tags>
   </entry>
   <entry>
-    <title>用Hexo + Butterfly + Giscus建设一个可以评论的博客网站</title>
-    <url>/2026/01/10/%E7%94%A8Hexo%20+%20Butterfly%20+%20Giscus%E5%BB%BA%E8%AE%BE%E4%B8%80%E4%B8%AA%E5%8F%AF%E4%BB%A5%E8%AF%84%E8%AE%BA%E7%9A%84%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/</url>
+    <title>用 Docker + Memos 搭建一个私人的备忘录</title>
+    <url>/2026/01/11/%E7%94%A8%20Docker%20+%20Memos%20%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%A7%81%E4%BA%BA%E7%9A%84%E5%A4%87%E5%BF%98%E5%BD%95/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">        _,met$$$$$gg.          root@raspberrypi</span><br><span class="line">     ,g$$$$$$$$$$$$$$$P.       ----------------</span><br><span class="line">   ,g$$P&quot;&quot;       &quot;&quot;&quot;Y$$.&quot;.     OS: Debian GNU/Linux 13 (trixie) aarch64</span><br><span class="line">  ,$$P&#x27;              `$$$.     Host: Raspberry Pi 5 Model B Rev 1.1</span><br><span class="line">&#x27;,$$P       ,ggs.     `$$b:    Kernel: 6.12.47+rpt-rpi-2712</span><br><span class="line">`d$$&#x27;     ,$P&quot;&#x27;   .    $$$     Uptime: 7 days, 1 hour, 45 mins</span><br><span class="line"> $$P      d$&#x27;     ,    $$P     Packages: 645 (dpkg)</span><br><span class="line"> $$:      $$.   -    ,d$$&#x27;     Shell: bash 5.2.37</span><br><span class="line"> $$;      Y$b._   _,d$P&#x27;       Terminal: /dev/pts/0</span><br><span class="line"> Y$$.    `.`&quot;Y$$$$P&quot;&#x27;          CPU: BCM2712 (4) @ 2.40 GHz</span><br><span class="line"> `$$b      &quot;-.__               GPU: Broadcom bcm2712-vc6 [Integrated]</span><br><span class="line">  `Y$$b                        Memory: 1750 MiB / 8063 MiB</span><br><span class="line">   `Y$$.</span><br><span class="line">     `$$b.                                             </span><br><span class="line">       `Y$$b.                                          </span><br><span class="line">         `&quot;Y$b._</span><br><span class="line">             `&quot;&quot;&quot;&quot;</span><br></pre></td></tr></table></figure>
+
+<h2 id="为什么选择-Memos"><a href="#为什么选择-Memos" class="headerlink" title="为什么选择 Memos"></a>为什么选择 Memos</h2><p>Memos 是一个现代化的、开源的、自托管的知识管理和笔记平台，专为注重隐私的用户和组织设计。Memos 提供了一个轻量而强大的解决方案，用于捕捉、组织和分享想法，同时支持全面的 Markdown 功能和跨平台访问。</p>
+<p>备忘录是一种原子化的、类似卡片的思维单元——旨在快速捕捉、便于浏览、并且自然组织。可以把它看作是数字化的记事卡：简短、集中、独立完整。备忘录基于这个简单的概念构建：原子化的笔记能够独立存在，同时又能连接形成知识网络。</p>
+<h2 id="为什么选择-Docker"><a href="#为什么选择-Docker" class="headerlink" title="为什么选择 Docker"></a>为什么选择 Docker</h2><p>Docker 是一个用于开发、交付和运行应用程序的开放平台。</p>
+<p>Docker 使您能够将应用程序与基础设施分离，从而可以快速交付软件。</p>
+<p>使用 Docker，您可以以管理应用程序的方式来管理基础设施。通过利用 Docker 在交付、测试和部署代码方面的方法，您可以显著减少从编写代码到在生产环境中运行代码的延迟。</p>
+<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><ul>
+<li>Docker</li>
+<li>Memos</li>
+<li>Debian Server</li>
+</ul>
+<h2 id="搭建步骤"><a href="#搭建步骤" class="headerlink" title="搭建步骤"></a>搭建步骤</h2><h3 id="安装-Docker"><a href="#安装-Docker" class="headerlink" title="安装 Docker"></a>安装 Docker</h3><p>删除旧版本的 Docker：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt remove $(dpkg --get-selections docker.io docker-compose docker-doc podman-docker containerd runc | <span class="built_in">cut</span> -f1)</span><br></pre></td></tr></table></figure>
+
+<p>安装新版本的 Docker：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Add Docker&#x27;s official GPG key:</span></span><br><span class="line"><span class="built_in">sudo</span> apt update</span><br><span class="line"><span class="built_in">sudo</span> apt install ca-certificates curl</span><br><span class="line"><span class="built_in">sudo</span> install -m 0755 -d /etc/apt/keyrings</span><br><span class="line"><span class="built_in">sudo</span> curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc</span><br><span class="line"><span class="built_in">sudo</span> <span class="built_in">chmod</span> a+r /etc/apt/keyrings/docker.asc</span><br><span class="line"></span><br><span class="line"><span class="comment"># Add the repository to Apt sources:</span></span><br><span class="line"><span class="built_in">sudo</span> <span class="built_in">tee</span> /etc/apt/sources.list.d/docker.sources &lt;&lt;<span class="string">EOF</span></span><br><span class="line"><span class="string">Types: deb</span></span><br><span class="line"><span class="string">URIs: https://download.docker.com/linux/debian</span></span><br><span class="line"><span class="string">Suites: $(. /etc/os-release &amp;&amp; echo &quot;$VERSION_CODENAME&quot;)</span></span><br><span class="line"><span class="string">Components: stable</span></span><br><span class="line"><span class="string">Signed-By: /etc/apt/keyrings/docker.asc</span></span><br><span class="line"><span class="string">EOF</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">sudo</span> apt update</span><br></pre></td></tr></table></figure>
+
+<h2 id="安装-Memos"><a href="#安装-Memos" class="headerlink" title="安装 Memos"></a>安装 Memos</h2><p>一条命令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line">	--name memos \</span><br><span class="line">	--publish 5230:5230 \</span><br><span class="line">	--volume ~/.memos/:/var/opt/memos \</span><br><span class="line">	neosmemo/memos:stable</span><br></pre></td></tr></table></figure>
+
+<p>或者使用 Docker Compose：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">memos:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">neosmemo/memos:stable</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">memos</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;5230:5230&quot;</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./memos:/var/opt/memos</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">unless-stopped</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker compose up -d</span><br></pre></td></tr></table></figure>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本文介绍了安装 Docker、安装 Memos。</p>
+]]></content>
+      <tags>
+        <tag>Docker</tag>
+        <tag>Memos</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>用 Docker + SearXNG 搭建一个私人的搜索引擎</title>
+    <url>/2026/01/11/%E7%94%A8%20Docker%20+%20SearXNG%20%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%A7%81%E4%BA%BA%E7%9A%84%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">        _,met$$$$$gg.          root@raspberrypi</span><br><span class="line">     ,g$$$$$$$$$$$$$$$P.       ----------------</span><br><span class="line">   ,g$$P&quot;&quot;       &quot;&quot;&quot;Y$$.&quot;.     OS: Debian GNU/Linux 13 (trixie) aarch64</span><br><span class="line">  ,$$P&#x27;              `$$$.     Host: Raspberry Pi 5 Model B Rev 1.1</span><br><span class="line">&#x27;,$$P       ,ggs.     `$$b:    Kernel: 6.12.47+rpt-rpi-2712</span><br><span class="line">`d$$&#x27;     ,$P&quot;&#x27;   .    $$$     Uptime: 7 days, 1 hour, 45 mins</span><br><span class="line"> $$P      d$&#x27;     ,    $$P     Packages: 645 (dpkg)</span><br><span class="line"> $$:      $$.   -    ,d$$&#x27;     Shell: bash 5.2.37</span><br><span class="line"> $$;      Y$b._   _,d$P&#x27;       Terminal: /dev/pts/0</span><br><span class="line"> Y$$.    `.`&quot;Y$$$$P&quot;&#x27;          CPU: BCM2712 (4) @ 2.40 GHz</span><br><span class="line"> `$$b      &quot;-.__               GPU: Broadcom bcm2712-vc6 [Integrated]</span><br><span class="line">  `Y$$b                        Memory: 1750 MiB / 8063 MiB</span><br><span class="line">   `Y$$.</span><br><span class="line">     `$$b.                                             </span><br><span class="line">       `Y$$b.                                          </span><br><span class="line">         `&quot;Y$b._</span><br><span class="line">             `&quot;&quot;&quot;&quot;</span><br></pre></td></tr></table></figure>
+
+<h2 id="为什么选择-SearXNG"><a href="#为什么选择-SearXNG" class="headerlink" title="为什么选择 SearXNG"></a>为什么选择 SearXNG</h2><p>公共实例对所有有其 URL 访问权限的人开放。通常它们由未知方运营（从用户的角度来看）。</p>
+<p>私有实例可以被特定的一部分人使用，例如为一群朋友提供的 SearXNG 实例，或可以通过 VPN 访问的公司实例。实例也可以是单用户实例，运行在用户的本地计算机上。</p>
+<p>为了更深入了解这些实例的工作原理，让我们看看 SearXNG 是如何保护其用户的。SearXNG 以多种方式保护用户的隐私，无论实例类型是私有还是公共。删除搜索请求中的私人数据有三种形式：</p>
+<ol>
+<li>从发送到搜索服务的请求中移除私人数据</li>
+<li>不通过搜索服务转发任何来自第三方服务的内容（例如广告）</li>
+<li>从发送到结果页面的请求中移除私人数据</li>
+</ol>
+<p>移除私人数据意味着不向外部搜索引擎发送 Cookie，并为每个请求生成一个随机浏览器配置文件。因此，无论是公共实例还是私有实例处理请求都无关紧要，因为在两种情况下都会进行匿名化。使用的 IP 地址将是实例的 IP，但 SearXNG 也可以配置为使用代理或 Tor。</p>
+<p>与大多数搜索服务不同，SearXNG 不提供广告或跟踪内容。因此，私人数据不会被转发给可能通过其获利的第三方。除了保护用户免受搜索服务的影响外，访问的结果页面也不会显示来源页面和搜索查询。</p>
+<p>如果有人使用公共实例，他们必须信任该实例的管理员。这意味着公共实例的用户无法知道他们的请求是否被记录、汇总，或者被发送或出售给第三方。</p>
+<p>此外，没有适当保护的公共实例更容易被滥用搜索服务，这可能导致外部服务实施验证码或禁止该实例的 IP 地址。因此，搜索请求返回的结果可能会减少。</p>
+<h2 id="为什么选择-Docker"><a href="#为什么选择-Docker" class="headerlink" title="为什么选择 Docker"></a>为什么选择 Docker</h2><p>Docker 是一个用于开发、交付和运行应用程序的开放平台。</p>
+<p>Docker 使您能够将应用程序与基础设施分离，从而可以快速交付软件。</p>
+<p>使用 Docker，您可以以管理应用程序的方式来管理基础设施。通过利用 Docker 在交付、测试和部署代码方面的方法，您可以显著减少从编写代码到在生产环境中运行代码的延迟。</p>
+<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><ul>
+<li>Docker</li>
+<li>SearXNG</li>
+<li>Debian Server</li>
+</ul>
+<h2 id="搭建步骤"><a href="#搭建步骤" class="headerlink" title="搭建步骤"></a>搭建步骤</h2><h3 id="安装-Docker"><a href="#安装-Docker" class="headerlink" title="安装 Docker"></a>安装 Docker</h3><p>删除旧版本的 Docker：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt remove $(dpkg --get-selections docker.io docker-compose docker-doc podman-docker containerd runc | <span class="built_in">cut</span> -f1)</span><br></pre></td></tr></table></figure>
+
+<p>安装新版本的 Docker：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Add Docker&#x27;s official GPG key:</span></span><br><span class="line"><span class="built_in">sudo</span> apt update</span><br><span class="line"><span class="built_in">sudo</span> apt install ca-certificates curl</span><br><span class="line"><span class="built_in">sudo</span> install -m 0755 -d /etc/apt/keyrings</span><br><span class="line"><span class="built_in">sudo</span> curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc</span><br><span class="line"><span class="built_in">sudo</span> <span class="built_in">chmod</span> a+r /etc/apt/keyrings/docker.asc</span><br><span class="line"></span><br><span class="line"><span class="comment"># Add the repository to Apt sources:</span></span><br><span class="line"><span class="built_in">sudo</span> <span class="built_in">tee</span> /etc/apt/sources.list.d/docker.sources &lt;&lt;<span class="string">EOF</span></span><br><span class="line"><span class="string">Types: deb</span></span><br><span class="line"><span class="string">URIs: https://download.docker.com/linux/debian</span></span><br><span class="line"><span class="string">Suites: $(. /etc/os-release &amp;&amp; echo &quot;$VERSION_CODENAME&quot;)</span></span><br><span class="line"><span class="string">Components: stable</span></span><br><span class="line"><span class="string">Signed-By: /etc/apt/keyrings/docker.asc</span></span><br><span class="line"><span class="string">EOF</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">sudo</span> apt update</span><br></pre></td></tr></table></figure>
+
+<h3 id="安装-SearXNG"><a href="#安装-SearXNG" class="headerlink" title="安装 SearXNG"></a>安装 SearXNG</h3><p>一条命令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run --name searxng -d \</span><br><span class="line">	-p 8888:8080 \</span><br><span class="line">    -v <span class="string">&quot;./config/:/etc/searxng/&quot;</span> \</span><br><span class="line">    -v <span class="string">&quot;./data/:/var/cache/searxng/&quot;</span> \</span><br><span class="line">    docker.io/searxng/searxng:latest</span><br></pre></td></tr></table></figure>
+
+<p>或者使用 Docker Compose：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&#x27;3.8&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">searxng:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">docker.io/searxng/searxng:latest</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">searxng</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;8888:8080&quot;</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;./config:/etc/searxng&quot;</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;./data:/var/cache/searxng&quot;</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">unless-stopped</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker compose up -d</span><br></pre></td></tr></table></figure>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>始终使用由您信任的人操作的实例。无论用户使用哪种类型的实例，SearXNG 的隐私功能都可供使用。</p>
+<p>对于经常移动的用户，或只是想第一次尝试 SearXNG 的用户，公共实例是最佳选择。公共实例还通过为那些无法或不想运行实例的人提供一个注重隐私的搜索服务，从而使世界变得更美好。</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
+        <tag>SearXNG</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>用 Hexo + Butterfly + Giscus 搭建一个可以评论的博客网站</title>
+    <url>/2026/01/10/%E7%94%A8%20Hexo%20+%20Butterfly%20+%20Giscus%20%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%8F%AF%E4%BB%A5%E8%AF%84%E8%AE%BA%E7%9A%84%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/</url>
     <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近搭建了一个个人博客网站，使用了 Hexo 静态博客框架，配合 Butterfly 主题和 Giscus 评论系统。整个搭建过程相对简单，而且效果很好。在这里记录一下搭建过程，希望能帮助到也想搭建个人博客的朋友。</p>
 <h2 id="为什么选择-Hexo-Butterfly-Giscus"><a href="#为什么选择-Hexo-Butterfly-Giscus" class="headerlink" title="为什么选择 Hexo + Butterfly + Giscus"></a>为什么选择 Hexo + Butterfly + Giscus</h2><ul>
 <li><strong>Hexo</strong>：快速、简洁且高效的静态博客框架，基于 Node.js，支持 Markdown，生成静态文件速度快</li>

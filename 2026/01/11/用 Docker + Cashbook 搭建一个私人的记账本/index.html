@@ -1,0 +1,277 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>使用 Docker + Cashbook 搭建一个私人的记账本 | 梁栋烨的月亮船</title><meta name="author" content="梁栋烨"><meta name="copyright" content="梁栋烨"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta name="description" content="前言1234567891011121314151617        _,met$$$$$gg.          root@raspberrypi     ,g$$$$$$$$$$$$$$$P.       ----------------   ,g$$P&quot;&quot;       &quot;&quot;&quot;Y$$.&quot;.     OS: Debian GNU&#x2F;Lin">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用 Docker + Cashbook 搭建一个私人的记账本">
+<meta property="og:url" content="https://liangdongye999.github.io/2026/01/11/%E7%94%A8%20Docker%20+%20Cashbook%20%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%A7%81%E4%BA%BA%E7%9A%84%E8%AE%B0%E8%B4%A6%E6%9C%AC/index.html">
+<meta property="og:site_name" content="梁栋烨的月亮船">
+<meta property="og:description" content="前言1234567891011121314151617        _,met$$$$$gg.          root@raspberrypi     ,g$$$$$$$$$$$$$$$P.       ----------------   ,g$$P&quot;&quot;       &quot;&quot;&quot;Y$$.&quot;.     OS: Debian GNU&#x2F;Lin">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://liangdongye999.github.io/img/canvas_by_roytanck.jpg">
+<meta property="article:published_time" content="2026-01-11T04:32:00.000Z">
+<meta property="article:modified_time" content="2026-01-11T04:44:08.330Z">
+<meta property="article:author" content="梁栋烨">
+<meta property="article:tag" content="Cashbook">
+<meta property="article:tag" content="Docker">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://liangdongye999.github.io/img/canvas_by_roytanck.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "使用 Docker + Cashbook 搭建一个私人的记账本",
+  "url": "https://liangdongye999.github.io/2026/01/11/%E7%94%A8%20Docker%20+%20Cashbook%20%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%A7%81%E4%BA%BA%E7%9A%84%E8%AE%B0%E8%B4%A6%E6%9C%AC/",
+  "image": "https://liangdongye999.github.io/img/canvas_by_roytanck.jpg",
+  "datePublished": "2026-01-11T04:32:00.000Z",
+  "dateModified": "2026-01-11T04:44:08.330Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "梁栋烨",
+      "url": "https://liangdongye999.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/163_by_e4v.jpg"><link rel="canonical" href="https://liangdongye999.github.io/2026/01/11/%E7%94%A8%20Docker%20+%20Cashbook%20%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%A7%81%E4%BA%BA%E7%9A%84%E8%AE%B0%E8%B4%A6%E6%9C%AC/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css?v=5.5.2"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '使用 Docker + Cashbook 搭建一个私人的记账本',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="alternate" href="/atom.xml" title="梁栋烨的月亮船" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/Abstract_Painting_Photo_by_Pierre_Ch%C3%A2tel-Innocenti.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">6</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/%E6%8A%80%E6%9C%AF/"><i class="fa-fw fas fa-code"></i><span> 技术</span></a></div><div class="menus_item"><a class="site-page" href="/categories/%E6%97%A5%E8%AE%B0/"><i class="fa-fw fas fa-calendar-alt"></i><span> 日记</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/img/canvas_by_roytanck.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">梁栋烨的月亮船</span></a><a class="nav-page-title" href="/"><span class="site-name">使用 Docker + Cashbook 搭建一个私人的记账本</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/%E6%8A%80%E6%9C%AF/"><i class="fa-fw fas fa-code"></i><span> 技术</span></a></div><div class="menus_item"><a class="site-page" href="/categories/%E6%97%A5%E8%AE%B0/"><i class="fa-fw fas fa-calendar-alt"></i><span> 日记</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">使用 Docker + Cashbook 搭建一个私人的记账本</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-01-11T04:32:00.000Z" title="发表于 2026-01-11 12:32:00">2026-01-11</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-01-11T04:44:08.330Z" title="更新于 2026-01-11 12:44:08">2026-01-11</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></span></div><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">        _,met$$$$$gg.          root@raspberrypi</span><br><span class="line">     ,g$$$$$$$$$$$$$$$P.       ----------------</span><br><span class="line">   ,g$$P&quot;&quot;       &quot;&quot;&quot;Y$$.&quot;.     OS: Debian GNU/Linux 13 (trixie) aarch64</span><br><span class="line">  ,$$P&#x27;              `$$$.     Host: Raspberry Pi 5 Model B Rev 1.1</span><br><span class="line">&#x27;,$$P       ,ggs.     `$$b:    Kernel: 6.12.47+rpt-rpi-2712</span><br><span class="line">`d$$&#x27;     ,$P&quot;&#x27;   .    $$$     Uptime: 7 days, 1 hour, 45 mins</span><br><span class="line"> $$P      d$&#x27;     ,    $$P     Packages: 645 (dpkg)</span><br><span class="line"> $$:      $$.   -    ,d$$&#x27;     Shell: bash 5.2.37</span><br><span class="line"> $$;      Y$b._   _,d$P&#x27;       Terminal: /dev/pts/0</span><br><span class="line"> Y$$.    `.`&quot;Y$$$$P&quot;&#x27;          CPU: BCM2712 (4) @ 2.40 GHz</span><br><span class="line"> `$$b      &quot;-.__               GPU: Broadcom bcm2712-vc6 [Integrated]</span><br><span class="line">  `Y$$b                        Memory: 1750 MiB / 8063 MiB</span><br><span class="line">   `Y$$.</span><br><span class="line">     `$$b.                                             </span><br><span class="line">       `Y$$b.                                          </span><br><span class="line">         `&quot;Y$b._</span><br><span class="line">             `&quot;&quot;&quot;&quot;</span><br></pre></td></tr></table></figure>
+
+<h2 id="为什么选择-Cashbook"><a href="#为什么选择-Cashbook" class="headerlink" title="为什么选择 Cashbook"></a>为什么选择 Cashbook</h2><p>Cashbook 是一个功能全面、设计灵活的账单管理系统，采用前后端分离架构，后端独立管理界面便于系统维护。系统支持用户前台注册，并提供明暗主题切换以优化视觉体验。部署方式采用 Docker，简化了环境配置与发布流程。</p>
+<p>核心功能聚焦于多平台账单导入与管理，支持支付宝、微信、京东金融的 CSV 账单文件导入，并可在导入时根据用户配置自动转换消费类型。此外，系统提供模板导入功能，满足个性化数据录入需求。</p>
+<p>数据展示方面，系统提供直观的消费日历看板与月度账单分析（未来计划集成 AI 分析）。通过丰富的图表可视化支出类型、支付方式、每日&#x2F;每月流水统计及流水归属，帮助用户清晰掌握财务状况。</p>
+<p>系统支持多用户、多账本模式，实现用户间数据隔离与账本间独立管理。数据存储支持 PostgreSQL、MySQL 和 SQLite 多种数据库，并具备账本与系统级别的数据快速导入&#x2F;导出迁移能力。附加功能包括小票图片上传、自助平账（收支抵消）以及共享账本（多用户协同记账）。同时，系统已完成 Web 移动端适配，确保在不同设备上均能流畅使用。</p>
+<h2 id="为什么选择-Docker"><a href="#为什么选择-Docker" class="headerlink" title="为什么选择 Docker"></a>为什么选择 Docker</h2><p>Docker 是一个用于开发、交付和运行应用程序的开放平台。</p>
+<p>Docker 使您能够将应用程序与基础设施分离，从而可以快速交付软件。</p>
+<p>使用 Docker，您可以以管理应用程序的方式来管理基础设施。通过利用 Docker 在交付、测试和部署代码方面的方法，您可以显著减少从编写代码到在生产环境中运行代码的延迟。</p>
+<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><ul>
+<li>Docker</li>
+<li>Cashbook</li>
+<li>Debian Server</li>
+</ul>
+<h2 id="搭建步骤"><a href="#搭建步骤" class="headerlink" title="搭建步骤"></a>搭建步骤</h2><h3 id="安装-Docker"><a href="#安装-Docker" class="headerlink" title="安装 Docker"></a>安装 Docker</h3><p>删除旧版本的 Docker：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt remove $(dpkg --get-selections docker.io docker-compose docker-doc podman-docker containerd runc | <span class="built_in">cut</span> -f1)</span><br></pre></td></tr></table></figure>
+
+<p>安装新版本的 Docker：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Add Docker&#x27;s official GPG key:</span></span><br><span class="line"><span class="built_in">sudo</span> apt update</span><br><span class="line"><span class="built_in">sudo</span> apt install ca-certificates curl</span><br><span class="line"><span class="built_in">sudo</span> install -m 0755 -d /etc/apt/keyrings</span><br><span class="line"><span class="built_in">sudo</span> curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc</span><br><span class="line"><span class="built_in">sudo</span> <span class="built_in">chmod</span> a+r /etc/apt/keyrings/docker.asc</span><br><span class="line"></span><br><span class="line"><span class="comment"># Add the repository to Apt sources:</span></span><br><span class="line"><span class="built_in">sudo</span> <span class="built_in">tee</span> /etc/apt/sources.list.d/docker.sources &lt;&lt;<span class="string">EOF</span></span><br><span class="line"><span class="string">Types: deb</span></span><br><span class="line"><span class="string">URIs: https://download.docker.com/linux/debian</span></span><br><span class="line"><span class="string">Suites: $(. /etc/os-release &amp;&amp; echo &quot;$VERSION_CODENAME&quot;)</span></span><br><span class="line"><span class="string">Components: stable</span></span><br><span class="line"><span class="string">Signed-By: /etc/apt/keyrings/docker.asc</span></span><br><span class="line"><span class="string">EOF</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">sudo</span> apt update</span><br></pre></td></tr></table></figure>
+
+<h2 id="安装-Cashbook"><a href="#安装-Cashbook" class="headerlink" title="安装 Cashbook"></a>安装 Cashbook</h2><p>使用 Docker Compose：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">main:</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">cashbook4</span></span><br><span class="line">    <span class="attr">depends_on:</span> </span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;db&quot;</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">dingdangdog/cashbook:latest</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">always</span></span><br><span class="line">    <span class="comment"># network_mode: &quot;host&quot;</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./data:/app/data</span></span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">      <span class="comment"># 环境变量详解请查阅：https://doc.cashbook.oldmoon.top/deploy/#cashbook环境变量详解</span></span><br><span class="line">      <span class="comment">#NUXT_DATA_PATH: &quot;/app/data&quot;</span></span><br><span class="line">      <span class="attr">DATABASE_URL:</span> <span class="string">&quot;postgresql://postgres:postgres@cashbook_db:5432/cashbook?schema=public&quot;</span></span><br><span class="line">      <span class="attr">NUXT_AUTH_SECRET:</span> <span class="string">&quot;auth_secret&quot;</span></span><br><span class="line">      <span class="attr">NUXT_ADMIN_USERNAME:</span> <span class="string">&quot;admin&quot;</span></span><br><span class="line">      <span class="attr">NUXT_ADMIN_PASSWORD:</span> <span class="string">&quot;fb35e9343a1c095ce1c1d1eb6973dc570953159441c3ee315ecfefb6ed05f4cc&quot;</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="number">9090</span><span class="string">:9090</span></span><br><span class="line">  <span class="attr">db:</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">cashbook_db</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">postgres:17.4-alpine3.21</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">always</span></span><br><span class="line">    <span class="comment">#network_mode: &quot;host&quot;</span></span><br><span class="line">    <span class="comment"># set shared memory limit when using docker-compose</span></span><br><span class="line">    <span class="attr">shm_size:</span> <span class="string">128mb</span></span><br><span class="line">    <span class="comment"># or set shared memory limit when deploy via swarm stack</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./db:/var/lib/postgresql/data</span> </span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">      <span class="comment">#POSTGRES_USER: postgres # 数据库用户名，不填默认为postgres</span></span><br><span class="line">      <span class="attr">POSTGRES_PASSWORD:</span> <span class="string">postgres</span> <span class="comment"># 数据库密码 【自行修改！】</span></span><br><span class="line">      <span class="attr">POSTGRES_DB:</span> <span class="string">cashbook</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="number">5432</span><span class="string">:5432</span> <span class="comment">#开发数据库端口，请【自行考虑】</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker compose up -d</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>默认管理员用户</th>
+<th>默认管理员密码</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>admin</td>
+<td>admin123456</td>
+</tr>
+</tbody></table>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本文介绍了安装 Docker、安装 Cashbook。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://liangdongye999.github.io">梁栋烨</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://liangdongye999.github.io/2026/01/11/%E7%94%A8%20Docker%20+%20Cashbook%20%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%A7%81%E4%BA%BA%E7%9A%84%E8%AE%B0%E8%B4%A6%E6%9C%AC/">https://liangdongye999.github.io/2026/01/11/%E7%94%A8%20Docker%20+%20Cashbook%20%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%A7%81%E4%BA%BA%E7%9A%84%E8%AE%B0%E8%B4%A6%E6%9C%AC/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://liangdongye999.github.io" target="_blank">梁栋烨的月亮船</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Docker/">Docker</a><a class="post-meta__tags" href="/tags/Cashbook/">Cashbook</a></div><div class="post-share"><div class="social-share" data-image="/img/canvas_by_roytanck.jpg" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2026/01/11/%E7%94%A8%20Docker%20+%20Memos%20%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%A7%81%E4%BA%BA%E7%9A%84%E5%A4%87%E5%BF%98%E5%BD%95/" title="用 Docker + Memos 搭建一个私人的备忘录"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/canvas_by_roytanck.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">用 Docker + Memos 搭建一个私人的备忘录</div></div><div class="info-2"><div class="info-item-1">前言1234567891011121314151617        _,met$$$$$gg.          root@raspberrypi     ,g$$$$$$$$$$$$$$$P.       ----------------   ,g$$P&quot;&quot;       &quot;&quot;&quot;Y$$.&quot;.     OS: Debian GNU/Linux 13 (trixie) aarch64  ,$$P&#x27;              `$$$.     Host: Raspberry Pi 5 Model B Rev 1.1&#x27;,$$P       ,ggs.     `$$b:    Kernel: 6.12.47+rpt-rpi-2712`d$$&#x27;     ,$P&quot;&#x27;   .    $$$     Uptime: 7 days, 1 hour, 45 mins $$P      d$&#x27;     ,    $$P     Packages: 645 (dpkg) $$:  ...</div></div></div></a><a class="pagination-related" href="/2026/01/11/%E7%94%A8%20Docker%20+%20SearXNG%20%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%A7%81%E4%BA%BA%E7%9A%84%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/" title="用 Docker + SearXNG 搭建一个私人的搜索引擎"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/canvas_by_roytanck.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">用 Docker + SearXNG 搭建一个私人的搜索引擎</div></div><div class="info-2"><div class="info-item-1">前言1234567891011121314151617        _,met$$$$$gg.          root@raspberrypi     ,g$$$$$$$$$$$$$$$P.       ----------------   ,g$$P&quot;&quot;       &quot;&quot;&quot;Y$$.&quot;.     OS: Debian GNU/Linux 13 (trixie) aarch64  ,$$P&#x27;              `$$$.     Host: Raspberry Pi 5 Model B Rev 1.1&#x27;,$$P       ,ggs.     `$$b:    Kernel: 6.12.47+rpt-rpi-2712`d$$&#x27;     ,$P&quot;&#x27;   .    $$$     Uptime: 7 days, 1 hour, 45 mins $$P      d$&#x27;     ,    $$P     Packages: 645 (dpkg) $$:  ...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2026/01/11/%E7%94%A8%20Docker%20+%20Memos%20%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%A7%81%E4%BA%BA%E7%9A%84%E5%A4%87%E5%BF%98%E5%BD%95/" title="用 Docker + Memos 搭建一个私人的备忘录"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/canvas_by_roytanck.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-01-11</div><div class="info-item-2">用 Docker + Memos 搭建一个私人的备忘录</div></div><div class="info-2"><div class="info-item-1">前言1234567891011121314151617        _,met$$$$$gg.          root@raspberrypi     ,g$$$$$$$$$$$$$$$P.       ----------------   ,g$$P&quot;&quot;       &quot;&quot;&quot;Y$$.&quot;.     OS: Debian GNU/Linux 13 (trixie) aarch64  ,$$P&#x27;              `$$$.     Host: Raspberry Pi 5 Model B Rev 1.1&#x27;,$$P       ,ggs.     `$$b:    Kernel: 6.12.47+rpt-rpi-2712`d$$&#x27;     ,$P&quot;&#x27;   .    $$$     Uptime: 7 days, 1 hour, 45 mins $$P      d$&#x27;     ,    $$P     Packages: 645 (dpkg) $$:  ...</div></div></div></a><a class="pagination-related" href="/2026/01/11/%E7%94%A8%20Docker%20+%20SearXNG%20%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%A7%81%E4%BA%BA%E7%9A%84%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/" title="用 Docker + SearXNG 搭建一个私人的搜索引擎"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/canvas_by_roytanck.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-01-11</div><div class="info-item-2">用 Docker + SearXNG 搭建一个私人的搜索引擎</div></div><div class="info-2"><div class="info-item-1">前言1234567891011121314151617        _,met$$$$$gg.          root@raspberrypi     ,g$$$$$$$$$$$$$$$P.       ----------------   ,g$$P&quot;&quot;       &quot;&quot;&quot;Y$$.&quot;.     OS: Debian GNU/Linux 13 (trixie) aarch64  ,$$P&#x27;              `$$$.     Host: Raspberry Pi 5 Model B Rev 1.1&#x27;,$$P       ,ggs.     `$$b:    Kernel: 6.12.47+rpt-rpi-2712`d$$&#x27;     ,$P&quot;&#x27;   .    $$$     Uptime: 7 days, 1 hour, 45 mins $$P      d$&#x27;     ,    $$P     Packages: 645 (dpkg) $$:  ...</div></div></div></a></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="giscus-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/Abstract_Painting_Photo_by_Pierre_Ch%C3%A2tel-Innocenti.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">梁栋烨</div><div class="author-info-description">梁栋烨的个人网站，写写画画</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">6</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><a id="card-info-btn" href="javascript:alert(&quot;收藏本站，或者订阅本站的RSS&quot;)"><i class="fas fa-star"></i><span>关注我</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/liangdongye999" target="_blank" title="Github"><i class="fab fa-github" style="color: ;"></i></a><a class="social-icon" href="mailto:3813563706@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: ;"></i></a><a class="social-icon" href="https://space.bilibili.com/3632318820387151" target="_blank" title="哔哩哔哩"><i class="fab fa-bilibili" style="color: ;"></i></a><a class="social-icon" href="/atom.xml" target="_blank" title="RSS"><i class="fas fa-rss" style="color: ;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">梁栋烨的月亮船</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%80%89%E6%8B%A9-Cashbook"><span class="toc-number">2.</span> <span class="toc-text">为什么选择 Cashbook</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%80%89%E6%8B%A9-Docker"><span class="toc-number">3.</span> <span class="toc-text">为什么选择 Docker</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-number">4.</span> <span class="toc-text">准备工作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%90%AD%E5%BB%BA%E6%AD%A5%E9%AA%A4"><span class="toc-number">5.</span> <span class="toc-text">搭建步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-Docker"><span class="toc-number">5.1.</span> <span class="toc-text">安装 Docker</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-Cashbook"><span class="toc-number">6.</span> <span class="toc-text">安装 Cashbook</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">7.</span> <span class="toc-text">总结</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2026/01/11/%E7%94%A8%20Docker%20+%20Memos%20%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%A7%81%E4%BA%BA%E7%9A%84%E5%A4%87%E5%BF%98%E5%BD%95/" title="用 Docker + Memos 搭建一个私人的备忘录"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/canvas_by_roytanck.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="用 Docker + Memos 搭建一个私人的备忘录"/></a><div class="content"><a class="title" href="/2026/01/11/%E7%94%A8%20Docker%20+%20Memos%20%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%A7%81%E4%BA%BA%E7%9A%84%E5%A4%87%E5%BF%98%E5%BD%95/" title="用 Docker + Memos 搭建一个私人的备忘录">用 Docker + Memos 搭建一个私人的备忘录</a><time datetime="2026-01-11T04:41:38.962Z" title="发表于 2026-01-11 12:41:38">2026-01-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/01/11/%E7%94%A8%20Docker%20+%20Cashbook%20%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%A7%81%E4%BA%BA%E7%9A%84%E8%AE%B0%E8%B4%A6%E6%9C%AC/" title="使用 Docker + Cashbook 搭建一个私人的记账本"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/canvas_by_roytanck.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="使用 Docker + Cashbook 搭建一个私人的记账本"/></a><div class="content"><a class="title" href="/2026/01/11/%E7%94%A8%20Docker%20+%20Cashbook%20%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%A7%81%E4%BA%BA%E7%9A%84%E8%AE%B0%E8%B4%A6%E6%9C%AC/" title="使用 Docker + Cashbook 搭建一个私人的记账本">使用 Docker + Cashbook 搭建一个私人的记账本</a><time datetime="2026-01-11T04:32:00.000Z" title="发表于 2026-01-11 12:32:00">2026-01-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/01/11/%E7%94%A8%20Docker%20+%20SearXNG%20%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%A7%81%E4%BA%BA%E7%9A%84%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/" title="用 Docker + SearXNG 搭建一个私人的搜索引擎"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/canvas_by_roytanck.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="用 Docker + SearXNG 搭建一个私人的搜索引擎"/></a><div class="content"><a class="title" href="/2026/01/11/%E7%94%A8%20Docker%20+%20SearXNG%20%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%A7%81%E4%BA%BA%E7%9A%84%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/" title="用 Docker + SearXNG 搭建一个私人的搜索引擎">用 Docker + SearXNG 搭建一个私人的搜索引擎</a><time datetime="2026-01-11T04:10:00.000Z" title="发表于 2026-01-11 12:10:00">2026-01-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/01/11/2026-01-11/" title="生病日记，好烦啊，好想痊愈"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/canvas_by_roytanck.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="生病日记，好烦啊，好想痊愈"/></a><div class="content"><a class="title" href="/2026/01/11/2026-01-11/" title="生病日记，好烦啊，好想痊愈">生病日记，好烦啊，好想痊愈</a><time datetime="2026-01-10T20:40:00.000Z" title="发表于 2026-01-11 04:40:00">2026-01-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/01/10/%E7%94%A8%20Hexo%20+%20Butterfly%20+%20Giscus%20%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%8F%AF%E4%BB%A5%E8%AF%84%E8%AE%BA%E7%9A%84%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/" title="用 Hexo + Butterfly + Giscus 搭建一个可以评论的博客网站"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/canvas_by_roytanck.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="用 Hexo + Butterfly + Giscus 搭建一个可以评论的博客网站"/></a><div class="content"><a class="title" href="/2026/01/10/%E7%94%A8%20Hexo%20+%20Butterfly%20+%20Giscus%20%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%8F%AF%E4%BB%A5%E8%AF%84%E8%AE%BA%E7%9A%84%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/" title="用 Hexo + Butterfly + Giscus 搭建一个可以评论的博客网站">用 Hexo + Butterfly + Giscus 搭建一个可以评论的博客网站</a><time datetime="2026-01-10T05:10:00.000Z" title="发表于 2026-01-10 13:10:00">2026-01-10</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(/img/Forever_by_Shady_S.jpg);"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By 梁栋烨</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.2"></script><script src="/js/main.js?v=5.5.2"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@19.1.3/dist/lazyload.iife.min.js"></script><div class="js-pjax"><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = null
+
+  const getGiscusTheme = theme => theme === 'dark' ? 'dark' : 'light'
+
+  const createScriptElement = config => {
+    const ele = document.createElement('script')
+    Object.entries(config).forEach(([key, value]) => {
+      ele.setAttribute(key, value)
+    })
+    return ele
+  }
+
+  const loadGiscus = (el = document, key) => {
+    const mappingConfig = isShuoshuo
+      ? { 'data-mapping': 'specific', 'data-term': key }
+      : { 'data-mapping': (option && option['data-mapping']) || 'pathname' }
+
+    const giscusConfig = {
+      src: 'https://giscus.app/client.js',
+      'data-repo': 'liangdongye999/liangdongye999.github.io',
+      'data-repo-id': 'R_kgDOQ3CqYg',
+      'data-category-id': 'DIC_kwDOQ3CqYs4C0x-_',
+      'data-theme': getGiscusTheme(document.documentElement.getAttribute('data-theme')),
+      'data-reactions-enabled': '1',
+      crossorigin: 'anonymous',
+      async: true,
+      ...option,
+      ...mappingConfig
+    }
+
+    const scriptElement = createScriptElement(giscusConfig)
+
+    el.querySelector('#giscus-wrap').appendChild(scriptElement)
+
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyGiscus = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+  }
+
+  const changeGiscusTheme = theme => {
+    const iframe = document.querySelector('#giscus-wrap iframe')
+    if (iframe) {
+      const message = {
+        giscus: {
+          setConfig: {
+            theme: getGiscusTheme(theme)
+          }
+        }
+      }
+      iframe.contentWindow.postMessage(message, 'https://giscus.app')
+    }
+  }
+
+  btf.addGlobalFn('themeChange', changeGiscusTheme, 'giscus')
+
+  if (isShuoshuo) {
+    'Giscus' === 'Giscus'
+      ? window.shuoshuoComment = { loadComment: loadGiscus }
+      : window.loadOtherComment = loadGiscus
+    return
+  }
+
+  if ('Giscus' === 'Giscus' || !false) {
+    if (false) btf.loadComment(document.getElementById('giscus-wrap'), loadGiscus)
+    else loadGiscus()
+  } else {
+    window.loadOtherComment = loadGiscus
+  }
+})()</script></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="local-search-input"><input placeholder="搜索文章..." type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=5.5.2"></script></div></div></body></html>
